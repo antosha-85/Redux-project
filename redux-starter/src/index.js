@@ -1,11 +1,20 @@
-import { compose, pipe } from "lodash/fp";
-let input = "   JavaScript    ";
-let output = "div" + input.trim() + "/div";
+const {bugAdded, bugResolved} = require('./actions')
+console.log("bugResolved", bugResolved)
 
-const trim = str => str.trim();
-const wrap = type => str => `<${type}>${str}</${type}>`;
-const toLowerCase = str => str.toLowerCase();
-// const result = wrap(toLowerCase(trim(input)));
 
-const transform = pipe(trim, toLowerCase, wrap('span'))
-console.log(transform(input));
+const store = require ("./store");
+
+const unsubscribe = store.subscribe(()=> {
+    console.log('Store changed', store.getState())
+})
+store.dispatch(bugAdded('Bug 1'))
+store.dispatch(bugResolved(1))
+unsubscribe();
+
+// store.dispatch({
+//     type: BUG_REMOVED,
+//     payload: {
+//         id: 1
+//     }
+// })
+console.log("store", store.getState())
