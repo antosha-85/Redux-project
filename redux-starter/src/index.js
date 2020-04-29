@@ -1,7 +1,9 @@
-const {bugAdded, bugResolved} = require('./actions')
+// const {bugAdded, bugResolved} = require('./actions')
+import {bugAdded, bugResolved} from './actions'
 console.log("bugResolved", bugResolved)
 
-
+const test = () => console.log('Hello World')
+test()
 const store = require ("./store");
 
 const unsubscribe = store.subscribe(()=> {

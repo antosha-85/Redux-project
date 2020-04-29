@@ -1,18 +1,17 @@
-const {BUG_ADDED, BUG_REMOVED, BUG_RESOLVED} = require('./actionTypes')
+import {BUG_ADDED, BUG_REMOVED, BUG_RESOLVED} from './actionTypes'
 
-module.exports = {
 
-    bugAdded : description=> ({
+    export const bugAdded = description=> ({
             type: BUG_ADDED,
             payload: {
                 description
             }
-    }),
+    })
     
-    bugResolved : id => ({
+    export const bugResolved = id => ({
         type: BUG_RESOLVED,
         payload: {
             id
         }
     })
-}
+
